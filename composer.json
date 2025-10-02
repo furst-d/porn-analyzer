@@ -1,0 +1,21 @@
+{
+    "name": "furstd/porn-analyzer",
+    "description": "Library for processing data nudity from ServerZone CDN.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Furstd\\PornAnalyzer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dominik Fűrst",
+            "email": "menshons@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "nette/utils": "^4.0"
+    }
+}
