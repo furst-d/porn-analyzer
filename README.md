@@ -23,7 +23,7 @@ Example composer.json snippet:
 Then install:
 
 ```bash
-composer require furstd/porn-analyzer
+composer require furstd/porn-analyzer:^1.0
 ```
 
 This library requires PHP >= 7.4.
