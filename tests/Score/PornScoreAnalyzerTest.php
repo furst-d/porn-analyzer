@@ -28,6 +28,7 @@ final class PornScoreAnalyzerTest extends TestCase
 
         // With 10 items and top 10%, we select 1 highest score -> 1.0 -> normalized to 100
         $this->assertSame(100, $result->getScore());
+        $this->assertSame(1, $result->getSelectedScoreCount());
         $this->assertTrue($result->isErotic());
     }
 
@@ -40,6 +41,7 @@ final class PornScoreAnalyzerTest extends TestCase
 
         // average = (0.2+0.4+0.6+0.8+1.0)/5 = 0.6 -> normalized 60
         $this->assertSame(60, $result->getScore());
+        $this->assertSame(5, $result->getSelectedScoreCount());
         $this->assertTrue($result->isErotic());
     }
 
@@ -55,6 +57,8 @@ final class PornScoreAnalyzerTest extends TestCase
 
         // Average of top 25% (2 highest): (0.0156 + 0.0114) / 2 = 0.0135 -> normalized by multiply 300 = 4.05 -> 4
         $this->assertSame(4, $result->getScore());
+        $this->assertSame(2, $result->getSelectedScoreCount());
+        $this->assertSame([["time"=>4,"score"=>"0.0156"],["time"=>8,"score"=>"0.0114"]], $result->getSelectedScores());
         $this->assertFalse($result->isErotic());
     }
 

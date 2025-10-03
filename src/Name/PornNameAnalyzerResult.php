@@ -33,13 +33,4 @@ class PornNameAnalyzerResult
     {
         return $this->foundMatch;
     }
-
-    /**
-     * @param string|null $foundMatch
-     * @return void
-     */
-    public function setFoundMatch(?string $foundMatch): void
-    {
-        $this->foundMatch = $foundMatch;
-    }
 }

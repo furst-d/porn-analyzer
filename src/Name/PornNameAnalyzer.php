@@ -33,23 +33,19 @@ final class PornNameAnalyzer
     {
         $name = PornNameNormalizer::normalize($name);
 
-        $result = new PornNameAnalyzerResult();
-
         foreach ($this->pornPhrases as $phrase) {
             if (stripos($name, $phrase) !== false) {
-                $result->setFoundMatch($phrase);
-                return $result;
+                return new PornNameAnalyzerResult($phrase);
             }
         }
 
         foreach (explode(' ', $name) as $term) {
             if (in_array($term, $this->pornTerms)) {
-                $result->setFoundMatch($term);
-                return $result;
+                return new PornNameAnalyzerResult($term);
             }
         }
 
-        return $result;
+        return new PornNameAnalyzerResult();
     }
 
     /**

@@ -47,9 +47,9 @@ final class PornScoreAnalyzer
             ? (int) (count($scoresData) / $x) // Highest 1/x of checks
             : count($scoresData); // If there are less than x checks, use all of them
 
-        $score = $this->computeScore($scoresData, $selectedCount);
+        $result = $this->computeScore($scoresData, $selectedCount);
 
-        return new PornScoreAnalyzerResult($score, $this->eroticBoundaryScore);
+        return new PornScoreAnalyzerResult($result['score'], $this->eroticBoundaryScore, $result['selectedScores']);
     }
 
     /**
@@ -120,9 +120,9 @@ final class PornScoreAnalyzer
      *
      * @param array $scoresData
      * @param int $selectedCount
-     * @return int
+     * @return array
      */
-    private function computeScore(array $scoresData, int $selectedCount): int
+    private function computeScore(array $scoresData, int $selectedCount): array
     {
         $topScores = $this->selectTopScores($scoresData, $selectedCount);
 
@@ -130,7 +130,10 @@ final class PornScoreAnalyzer
             return $scoreData['score'];
         }, $topScores); // Extract scores from the top scores data
 
-        return $this->normalizeScore(array_sum($scores) / count($scores));
+        return [
+            'selectedScores' => $topScores,
+            'score' => $this->normalizeScore(array_sum($scores) / count($scores))
+        ];
     }
 
     /**

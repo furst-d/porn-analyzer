@@ -88,6 +88,12 @@ $result = $analyzer->analyze($scoresData);
 
 echo 'Score: ' . $result->getScore() . PHP_EOL;
 
+echo 'Selected ' . $result->getSelectedScoreCount() . ' scores';
+
+foreach ($result->getSelectedScores() as $score) {
+    echo ' - ' . $score['time'] . ': ' . $score['score'];
+}
+
 echo $result->isErotic() ? 'Erotic by score' : 'Not erotic by score';
 ```
 

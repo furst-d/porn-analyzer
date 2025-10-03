@@ -16,13 +16,20 @@ class PornScoreAnalyzerResult
     private int $eroticBoundaryScore;
 
     /**
+     * @var array $selectedScores
+     */
+    private array $selectedScores;
+
+    /**
      * @param int $score
      * @param int $eroticBoundaryScore
+     * @param array $selectedScores
      */
-    public function __construct(int $score, int $eroticBoundaryScore)
+    public function __construct(int $score, int $eroticBoundaryScore, array $selectedScores)
     {
         $this->score = $score;
         $this->eroticBoundaryScore = $eroticBoundaryScore;
+        $this->selectedScores = $selectedScores;
     }
 
     public function isErotic(): bool
@@ -36,5 +43,21 @@ class PornScoreAnalyzerResult
     public function getScore(): int
     {
         return $this->score;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSelectedScores(): array
+    {
+        return $this->selectedScores;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSelectedScoreCount(): int
+    {
+        return count($this->selectedScores);
     }
 }
