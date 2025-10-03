@@ -8,6 +8,11 @@
             "Furstd\\PornAnalyzer\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Furstd\\PornAnalyzer\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Dominik Fűrst",
@@ -17,5 +22,11 @@
     "require": {
         "php": ">=7.4",
         "nette/utils": "^4.0"
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.4"
     }
 }
