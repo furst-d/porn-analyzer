@@ -11,23 +11,23 @@ class PornScoreAnalyzerResult
     private int $score;
 
     /**
-     * @var int $limit
+     * @var int $eroticBoundaryScore
      */
-    private int $limit;
+    private int $eroticBoundaryScore;
 
     /**
      * @param int $score
-     * @param int $limit
+     * @param int $eroticBoundaryScore
      */
-    public function __construct(int $score, int $limit)
+    public function __construct(int $score, int $eroticBoundaryScore)
     {
         $this->score = $score;
-        $this->limit = $limit;
+        $this->eroticBoundaryScore = $eroticBoundaryScore;
     }
 
     public function isErotic(): bool
     {
-        return $this->score >= $this->limit;
+        return $this->score >= $this->eroticBoundaryScore;
     }
 
     /**
@@ -36,13 +36,5 @@ class PornScoreAnalyzerResult
     public function getScore(): int
     {
         return $this->score;
-    }
-
-    /**
-     * @return int
-     */
-    public function getLimit(): int
-    {
-        return $this->limit;
     }
 }
