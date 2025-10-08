@@ -60,8 +60,8 @@ Name normalization details:
 Use PornScoreAnalyzer to aggregate multiple numeric scores into a single normalized score and classify it.
 
 Constructor parameters:
-- **scoresTopPercent** (int): Percent of top scores to consider (1–100). It is expected that not the entire video has to be erotic from start to finish. For this reason, only the top x% of scores are averaged, e.g., for 25% and 60 scores, the top 15 scores are averaged.
-- **eroticBoundaryScore** (int): The boundary score for classifying content as erotic. If the normalized score is greater than or equal to this value, the content is classified as erotic. Default is 100.
+- **scoresTopPercent** (int): Percentage of top scores to consider (1–100). It is expected that not the entire video has to be erotic from start to finish. For this reason, only the top x% of scores are averaged, e.g., for 25% and 60 scores, the top 15 scores are averaged.
+- **eroticBoundaryScore** (int): The boundary score for classifying content as erotic. If the normalized score is greater than or equal to this value, the content is classified as erotic.
 - **scoreNormalizationMax** (int, default 100): The maximum value of the normalized score. If a value is e.g., 300, the normalized score is clamped to [0, 300].
 
 Scores input format:
@@ -88,13 +88,13 @@ $result = $analyzer->analyze($scoresData);
 
 echo 'Score: ' . $result->getScore() . PHP_EOL;
 
-echo 'Selected ' . $result->getSelectedScoreCount() . ' scores';
+echo 'Selected ' . $result->getSelectedScoreCount() . ' scores' . PHP_EOL;
 
 foreach ($result->getSelectedScores() as $score) {
-    echo ' - ' . $score['time'] . ': ' . $score['score'];
+    echo ' - ' . $score['time'] . ': ' . $score['score'] . PHP_EOL;
 }
 
-echo $result->isErotic() ? 'Erotic by score' : 'Not erotic by score';
+echo $result->isErotic() ? 'Erotic by score' : 'Not erotic by score' . PHP_EOL;
 ```
 
 What happens:

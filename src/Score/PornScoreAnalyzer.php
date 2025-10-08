@@ -23,9 +23,9 @@ final class PornScoreAnalyzer
     private int $scoreNormalizationMax;
 
     /**
-     * @param int $scoresTopPercent
-     * @param int $eroticBoundaryScore
-     * @param int $scoreNormalizationMax
+     * @param int $scoresTopPercent Percentage of top scores to consider (1–100). It is expected that not the entire video has to be erotic from start to finish. For this reason, only the top x% of scores are averaged.
+     * @param int $eroticBoundaryScore The boundary score for classifying content as erotic. If the normalized score is greater than or equal to this value, the content is classified as erotic.
+     * @param int $scoreNormalizationMax The maximum value of the normalized score. If a value is e.g., 300, the normalized score is clamped to [0, 300].
      */
     public function __construct(int $scoresTopPercent, int $eroticBoundaryScore, int $scoreNormalizationMax = 100)
     {
